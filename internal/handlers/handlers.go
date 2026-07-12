@@ -12,7 +12,7 @@ import (
 )
 
 func HandleMain(res http.ResponseWriter, req *http.Request) {
-	content, err := os.ReadFile("../index.html")
+	content, err := os.ReadFile("./index.html")
 	if err != nil {
 		http.Error(res, "file not found", http.StatusNotFound)
 		return
