@@ -12,14 +12,7 @@ import (
 )
 
 func HandleMain(res http.ResponseWriter, req *http.Request) {
-	content, err := os.ReadFile("./index.html")
-	if err != nil {
-		http.Error(res, "file not found", http.StatusNotFound)
-		return
-	}
-
-	res.Header().Set("Content-Type", "text/html; charset=utf-8")
-	res.Write(content)
+	http.ServeFile(res, req, "./index.html")
 }
 
 func HandleUpload(res http.ResponseWriter, req *http.Request) {

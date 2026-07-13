@@ -21,10 +21,7 @@ func DecoderMorseCode(message string) (string, error) {
 }
 
 func getIsMorse(code string) bool {
-	for _, c := range code {
-		if c != '-' && c != '.' && !unicode.IsSpace(c) {
-			return false
-		}
-	}
-	return true
+	return !strings.ContainsFunc(code, func(c rune) bool {
+		return c != '-' && c != '.' && !unicode.IsSpace(c)
+	})
 }
